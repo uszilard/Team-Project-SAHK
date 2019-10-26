@@ -1,3 +1,5 @@
+var youTube = $("#youtube")
+
 $("#search-btn").on("click", function (event) {
 
     event.preventDefault()
@@ -11,16 +13,7 @@ $("#search-btn").on("click", function (event) {
 
 })
 
-
-
-// Function for dumping the JSON content for each button into the div
 function displayMusicInfo() {
-
-    // YOUR CODE GOES HERE!!! HINT: You will need to create a new div to hold the JSON.
-    //var musicVideo = $(this).attr("data-name");
-
-    // https://www.googleapis.com/youtube/v3/search?q=berlin&part=snippet&key=AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U
-
 
 };
 
@@ -28,26 +21,64 @@ displayMusicInfo()
 
 
 
-
+//  console.log(thumbnails_default);
+//A HTTP call to this URL with videoID will give all XML info of that video: 
+//http://gdata.youtube.com/feeds/api/videos?q=videoID
+//  console.log(videoID);
 
 function searchByKeyword(searchTerm) {
-    var key = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U"
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm + "&part=snippet&key=" + key;
+    var youTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U"
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm + "&part=snippet&key=" + youTubeKey;
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response)
+
         $("#youtube").text(JSON.stringify(response));
         console.log(response);
-        console.log(queryURL);
 
-        //var posterImg = $("<img>")
-        //posterImg.attr("src", response.Poster)
-        //$("#display-movie-poster").html(posterImg);
-        //console.log(posterImg);
+        for (var i = 0; i < response.items.length; i++) {
+            //store each JSON value in a variable
+            var publishedAt = response.items[i].snippet.publishedAt;
+            var channelId = response.items[i].snippet.channelId;
+            var title = response.items[i].snippet.title;
+            var description = response.items[i].snippet.description;
+            var thumbnails_default = response.items[i].snippet.thumbnails.default.url;
+            var thumbnails_medium = response.items[i].snippet.thumbnails.medium.url;
+            var thumbnails_high = response.items[i].snippet.thumbnails.high.url;
+            var channelTitle = response.items[i].snippet.channelTitle;
+            var liveBroadcastContent = response.items[i].snippet.liveBroadcastContent;
+            var videoID = response.items[i].id.videoId;
+        }
+
+
+
+
+
+        // for (var i = 0; i < youTube; i++) {
+        //   console.log[i]
+        // }
+
+
+        //var youTube = $("#youtube").text(youTube[i], title); // this is not working
+
+        // Create a thumbnail for a video snippet.
+        function createDisplayThumbnail(videoSnippet) {
+            var titleEl = $('<h3>');
+            titleEl.addClass('video-title');
+            $(titleEl).html(videoSnippet.title);
+            var thumbnailUrl = videoSnippet.thumbnails.medium.url;
+
+            var div = $('<div>');
+            div.addClass('video-content');
+            div.css('backgroundImage', 'url("' + thumbnailUrl + '")');
+            div.append(titleEl);
+            $('#youtube').append(div);
+        }
     });
+
+
 
 
 };
