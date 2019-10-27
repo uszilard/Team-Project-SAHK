@@ -52,50 +52,40 @@ function searchByKeyword(searchTerm) {
             var channelTitle = response.items[i].snippet.channelTitle;
             var liveBroadcastContent = response.items[i].snippet.liveBroadcastContent;
             var videoID = response.items[i].id.videoId;
-        }
 
+            // Create a thumbnail for a video snippet.
+            function createDisplayThumbnail(videoSnippet) {
+                var titleEl = $('<h3>');
+                titleEl.addClass('video-title');
+                $(titleEl).html(videoSnippet.title);
+                var thumbnailUrl = videoSnippet.thumbnails.medium.url;
 
-        // for (var i = 0; i < youTube; i++) {
-        //   console.log[i]
-        // }
-
-
-        //var youTube = $("#youtube").text(youTube[i], title); // this is not working
-
-        // Create a thumbnail for a video snippet.
-        function createDisplayThumbnail(videoSnippet) {
-            var titleEl = $('<h3>');
-            titleEl.addClass('video-title');
-            $(titleEl).html(videoSnippet.title);
-            var thumbnailUrl = videoSnippet.thumbnails.medium.url;
-
-            var div = $('<div>');
-            div.addClass('video-content');
-            div.css('backgroundImage', 'url("' + thumbnailUrl + '")');
-            div.append(titleEl);
-            $('#youtube').append(div);
-        }
+                var div = $('<div>');
+                div.addClass('video-content');
+                div.css('backgroundImage', 'url("' + thumbnailUrl + '")');
+                div.append(titleEl);
+                $('#youtube').append(div);
+            };
+        };
     });
-
-
-
-
 };
 
 // this section does not work I get an error 401 
-function searchByKeyword(searchTerm) {
-    var spotifyKey = "6rqhFgbbKwnb9MLmUQDhG6"
-    var queryURL = "https://api.spotify.com/v1/search?query=" + searchTerm;
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
 
-        $("#youtube").text(JSON.stringify(response));
-        console.log(response);
+//function searchByKeyword(searchTerm) {
+ //   var spotifyKey = "6rqhFgbbKwnb9MLmUQDhG6"
+   // var queryURL = "https://api.spotify.com/v1/search?query=" + searchTerm;
 
-    });
+    //$.ajax({
+     //   url: queryURL,
+       // method: "GET"
+    //}).then(function (response) {
 
-};
+      //  $("#youtube").text(JSON.stringify(response));
+        //console.log(response);
+
+    //});
+
+//};
 
