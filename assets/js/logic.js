@@ -1,4 +1,4 @@
-var youTube = $("#youtube")
+
 
 $("#search-btn").on("click", function (event) {
 
@@ -25,6 +25,8 @@ displayMusicInfo()
 //A HTTP call to this URL with videoID will give all XML info of that video: 
 //http://gdata.youtube.com/feeds/api/videos?q=videoID
 //  console.log(videoID);
+var youTube = $("#youtube")
+
 
 function searchByKeyword(searchTerm) {
     var youTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U"
@@ -53,9 +55,6 @@ function searchByKeyword(searchTerm) {
         }
 
 
-
-
-
         // for (var i = 0; i < youTube; i++) {
         //   console.log[i]
         // }
@@ -80,6 +79,23 @@ function searchByKeyword(searchTerm) {
 
 
 
+
+};
+
+// this section does not work I get an error 401 
+function searchByKeyword(searchTerm) {
+    var spotifyKey = "6rqhFgbbKwnb9MLmUQDhG6"
+    var queryURL = "https://api.spotify.com/v1/search?query=" + searchTerm;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+        $("#youtube").text(JSON.stringify(response));
+        console.log(response);
+
+    });
 
 };
 
