@@ -82,7 +82,7 @@ function searchByKeyword(searchTerm) {
     $("#youtube").text(JSON.stringify(response));
     console.log(response);
   });
-
+}
 
 // News Section block goes here, Hristina will take care of this for now
 //when testing other sections, you can marked the below as a "comment" in order to avoid error messages
@@ -97,6 +97,6 @@ $.ajax({
 }).then(function(response) {
   console.log(response);
   //choose random artist from the result
-//   var i = 
-//   var randomArtist = response.artist.length;
-})
+  //   var i =
+  //   var randomArtist = response.artist.length;
+});
