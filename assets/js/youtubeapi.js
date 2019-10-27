@@ -5,7 +5,7 @@ var radioSelect = $("#radioBtnFunction")
 //
 
 
-//
+// this section is not fully working
 $(youTubeSelect).on("click", function (obj) {
     console.log(obj)
 
