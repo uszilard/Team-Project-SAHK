@@ -1,14 +1,14 @@
-$("#search-btn").on("click", function(event) {
-  event.preventDefault();
+$("#search-btn").on("click", function (event) {
+    event.preventDefault();
 
-  var userSearchInput = $("#user-search").val();
+    var userSearchInput = $("#user-search").val();
 
-  console.log(userSearchInput);
+    console.log(userSearchInput);
 
-  searchByKeyword(userSearchInput);
+    searchByKeyword(userSearchInput);
 });
 
-function displayMusicInfo() {}
+function displayMusicInfo() { }
 
 displayMusicInfo();
 
@@ -18,85 +18,52 @@ displayMusicInfo();
 //  console.log(videoID);
 var youTube = $("#youtube");
 
+
 function searchByKeyword(searchTerm) {
-  var youTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U";
-  var queryURL =
-    "https://www.googleapis.com/youtube/v3/search?q=" +
-    searchTerm +
-    "&part=snippet&key=" +
-    youTubeKey;
+    var youTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U";
+    var queryURL =
+        "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm + "&part=snippet&key=" + youTubeKey;
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    // $("#youtube").text(JSON.stringify(response));
-    console.log(response);
+    $.ajax({
+        url: queryURL,
+        method: "GET"
 
-    for (var i = 0; i < response.items.length; i++) {
-      //store each JSON value in a variable
-      var publishedAt = response.items[i].snippet.publishedAt;
-      var channelId = response.items[i].snippet.channelId;
-      var title = response.items[i].snippet.title;
-      var description = response.items[i].snippet.description;
-      var thumbnails_default = response.items[i].snippet.thumbnails.default.url;
-      var thumbnails_medium = response.items[i].snippet.thumbnails.medium.url;
-      var thumbnails_high = response.items[i].snippet.thumbnails.high.url;
-      var channelTitle = response.items[i].snippet.channelTitle;
-      var liveBroadcastContent = response.items[i].snippet.liveBroadcastContent;
-      var videoID = response.items[i].id.videoId;
-    }
+    }).then(function (response) {
+        // $("#youtube").text(JSON.stringify(response));
+        console.log(response);
 
-    // for (var i = 0; i < youTube; i++) {
-    //   console.log[i]
-    // }
+        for (var i = 0; i < response.items.length; i++) {
+            //store each JSON value in a variable
+            var publishedAt = response.items[i].snippet.publishedAt;
+            var channelId = response.items[i].snippet.channelId;
+            var title = response.items[i].snippet.title;
+            var description = response.items[i].snippet.description;
+            var thumbnails_default = response.items[i].snippet.thumbnails.default.url;
+            var thumbnails_medium = response.items[i].snippet.thumbnails.medium.url;
+            var thumbnails_high = response.items[i].snippet.thumbnails.high.url;
+            var channelTitle = response.items[i].snippet.channelTitle;
+            var liveBroadcastContent = response.items[i].snippet.liveBroadcastContent;
+            var videoID = response.items[i].id.videoId;
+        }
 
-    //var youTube = $("#youtube").text(youTube[i], title); // this is not working
 
-    // Create a thumbnail for a video snippet.
-    function createDisplayThumbnail(videoSnippet) {
-      var titleEl = $("<h3>");
-      titleEl.addClass("video-title");
-      titleEl.html(title); // because we have it already defined this above
-      var thumbnailUrl = thumbnails_medium; // because we have it already defined this above
+        // Create a thumbnail for a video snippet.
+        function createDisplayThumbnail(videoSnippet) {
+            var titleEl = $("<iframe>");
+            titleEl.addClass("video-title");
+            titleEl.html(title); // because we have it already defined this above
+            var thumbnailUrl = thumbnails_medium; // because we have it already defined this above
 
-      var div = $("<div>");
-      div.addClass("video-content");
-      div.css("backgroundImage", 'url("' + thumbnailUrl + '")');
-      div.append(titleEl);
-      $("#youtube").append(div);
-    }
-    createDisplayThumbnail(response); //we call this function with the result as a parameter in order to be executed
-  });
+            var div = $("<div>");
+            div.addClass("video-content");
+            div.css("backgroundImage", 'url("' + thumbnailUrl + '")');
+            div.append(titleEl);
+            $("#youtube").append(div);
+        }
+        createDisplayThumbnail(response); //we call this function with the result as a parameter in order to be executed
+    });
 }
 
-// this section does not work I get an error 401 - Spotify block code goes here below:
-function searchByKeyword(searchTerm) {
-  var spotifyKey = "6rqhFgbbKwnb9MLmUQDhG6";
-  var queryURL = "https://api.spotify.com/v1/search?query=" + searchTerm;
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    $("#youtube").text(JSON.stringify(response));
-    console.log(response);
-  });
-}
 
-// News Section block goes here, Hristina will take care of this for now
-//when testing other sections, you can marked the below as a "comment" in order to avoid error messages
-var keyNapster = "OTBhN2VjODUtZTEwOS00MGY0LTk1ODYtZDViNzFmY2RhMzMy";
-var secretNapster = "ZmVmOTNmMGUtNGUwNS00NTNhLWEyY2ItNzYzNmNkZTIwZGY1";
-var queryURLNapster =
-  "http://api.napster.com/v2.2/artists/top?apikey=" + keyNapster + "&limit=50";
 
-$.ajax({
-  url: queryURLNapster,
-  method: "GET"
-}).then(function(response) {
-  console.log(response);
-  //choose random artist from the result
-  //   var i =
-  //   var randomArtist = response.artist.length;
-});
