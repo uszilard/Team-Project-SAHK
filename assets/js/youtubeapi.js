@@ -1,4 +1,20 @@
 //
+var youTubeSelect = $("#youTubeBtnFunction")
+var spotifySelect = $("#spotifyBtn")
+var radioSelect = $("#radioBtn")
+
+//
+function youTubeSelect(obj) {
+    if ($(obj).is(":checked")) {
+        alert("Yes checked"); //when checked
+
+    } else {
+        alert("Not checked"); //when not checked
+    }
+
+};
+
+// Search Function
 $("#search-btn").on("click", function (event) {
     event.preventDefault();
 
@@ -16,7 +32,7 @@ displayMusicInfo();
 
 var youTube = $("#youtube");
 
-//
+// Call the YouTube API
 function searchByKeyword(searchTerm) {
     $.ajax({
         type: 'GET',
@@ -41,7 +57,7 @@ function searchByKeyword(searchTerm) {
 //
 
 
-//
+// Display video in page
 function embedVideo(data) {
     var addVideo = $("<iframe>");
 

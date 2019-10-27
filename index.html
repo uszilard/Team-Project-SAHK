@@ -26,9 +26,18 @@
                 Platforms
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="https://www.youtube.com/">YouTube!</a>
-                <a class="dropdown-item" href="https://www.spotify.com/">Spotify!</a>
-                <a class="dropdown-item" href="https://live365.com/">RadioStation!</a>
+                <div class="input-group-text">
+                    <input type="checkbox" id="youTubeBtnFucntion" value="{youTubeBtn}" onchange="youTubeBtn(this)">
+                    <a> YouTube </a>
+                </div>
+                <div id="spotifyBtn" class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input">
+                    <a> Spotify </a>
+                </div>
+                <div id="radioBtn" class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input">
+                    <a> RadioStation </a>
+                </div>
             </div>
         </div>
     </nav>
