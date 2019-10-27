@@ -3,14 +3,26 @@
 var keyNapster = "OTBhN2VjODUtZTEwOS00MGY0LTk1ODYtZDViNzFmY2RhMzMy";
 var secretNapster = "ZmVmOTNmMGUtNGUwNS00NTNhLWEyY2ItNzYzNmNkZTIwZGY1";
 var queryURLNapster =
-    "http://api.napster.com/v2.2/artists/top?apikey=" + keyNapster + "&limit=50";
+    "http://api.napster.com/v2.2/artists/top?apikey=" + keyNapster + "&limit=10";
+
+
+var newsFeed = $("#news-feed")
 
 $.ajax({
     url: queryURLNapster,
     method: "GET"
-}).then(function (response) {
-    console.log(response);
-    //choose random artist from the result
-    //   var i =
-    //   var randomArtist = response.artist.length;
+}).then(function (result) {
+    console.log(result);
+    console.log(result.artists)
+
+    $(newsFeed).text(JSON.stringify(result.artists));
+
+    // choose random artist from the result
+    // var i = 0;
+
+    var randomArtist = result.artists;
+
+    for (var i = 0; i < randomArtist; i++) {
+        console.log[i]
+    }
 });
