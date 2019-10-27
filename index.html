@@ -14,32 +14,46 @@
 <body>
 
     <nav class="navbar navbar-light bg-light">
+
         <a class="navbar-brand">SAHK Movies & Songs</a>
+
         <form class="form-inline">
             <input type="text" id="user-search" class="form-control mr-sm-2" type="search" placeholder="Search"
                 aria-label="Search">
             <button id="search-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+
         <div class="dropdown">
+
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Platforms
+                Platform select
             </button>
+
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <div class="input-group-text">
-                    <input type="checkbox" id="youTubeBtnFucntion" value="{youTubeBtn}" onchange="youTubeBtn(this)">
-                    <a> YouTube </a>
+
+                <div>
+                    <input type="checkbox" name="YouTube" value="youTubeBtn" id="youTubeBtnFucntion">
+                    <label for="youtube"> YouTube </label>
+
                 </div>
-                <div id="spotifyBtn" class="input-group-text">
-                    <input type="checkbox" aria-label="Checkbox for following text input">
-                    <a> Spotify </a>
+
+                <div>
+                    <input type="checkbox" name="Spotify" value="spotifyBtn" id="spotifyBtnFunction">
+                    <label for="spotify"> Spotify </label>
+
                 </div>
-                <div id="radioBtn" class="input-group-text">
-                    <input type="checkbox" aria-label="Checkbox for following text input">
-                    <a> RadioStation </a>
+
+                <div>
+                    <input type="checkbox" name="RadioStation" value="radioBtn" id="radioBtnFunction">
+                    <label for="radiostation"> RadioStation </label>
+
                 </div>
+
             </div>
+
         </div>
+
     </nav>
 
 
@@ -68,6 +82,8 @@
         </div>
 
     </div>
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

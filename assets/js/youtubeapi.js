@@ -1,18 +1,23 @@
 //
-var youTubeSelect = $("#youTubeBtnFunction")
-var spotifySelect = $("#spotifyBtn")
-var radioSelect = $("#radioBtn")
+var youTubeSelect = $("#youTubeBtnFucntion")
+var spotifySelect = $("#spotifyBtnFunction")
+var radioSelect = $("#radioBtnFunction")
+//
+
 
 //
-function youTubeSelect(obj) {
+$(youTubeSelect).on("click", function (obj) {
+    console.log(obj)
+
     if ($(obj).is(":checked")) {
         alert("Yes checked"); //when checked
 
     } else {
         alert("Not checked"); //when not checked
     }
+});
+//
 
-};
 
 // Search Function
 $("#search-btn").on("click", function (event) {
@@ -30,7 +35,9 @@ function displayMusicInfo() { }
 displayMusicInfo();
 //
 
+
 var youTube = $("#youtube");
+
 
 // Call the YouTube API
 function searchByKeyword(searchTerm) {
