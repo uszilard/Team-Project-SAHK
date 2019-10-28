@@ -1,4 +1,25 @@
 //
+var youTubeSelect = $("#youTubeBtnFucntion")
+var spotifySelect = $("#spotifyBtnFunction")
+var radioSelect = $("#radioBtnFunction")
+//
+
+
+// this section is not fully working
+$(youTubeSelect).on("click", function (obj) {
+    console.log(obj)
+
+    if ($(obj).is(":checked")) {
+        alert("Yes checked"); //when checked
+
+    } else {
+        alert("Not checked"); //when not checked
+    }
+});
+//
+
+
+// Search Function
 $("#search-btn").on("click", function (event) {
     event.preventDefault();
 
@@ -15,31 +36,42 @@ displayMusicInfo();
 //
 
 
-//
-function getVideo() {
+var youTube = $("#youtube");
+
+
+// Call the YouTube API
+function searchByKeyword(searchTerm) {
     $.ajax({
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
         data: {
             key: 'AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U',
-            q: "cats",
+            q: searchTerm,
             part: 'snippet',
-            maxResults: 1,
+            maxResults: 5,
             type: 'video',
             videoEmbeddable: true,
         },
         success: function (data) {
             embedVideo(data)
+            console.log(data)
         },
         error: function (response) {
             console.log("Request Failed");
         }
     });
 }
+//
 
+
+// Display video in page
 function embedVideo(data) {
-    $('iframe').attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId)
-    $('h3').text(data.items[0].snippet.title)
-    //$('.description').text(data.items[0].snippet.description)
+    var addVideo = $("<iframe>");
+
+    addVideo.addClass("video-stream");
+
+    addVideo.attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
+
+    $("#youtube").append(addVideo);
 }
 //

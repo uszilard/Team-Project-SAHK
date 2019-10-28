@@ -4,13 +4,13 @@
 
 var keyNapster = "OTBhN2VjODUtZTEwOS00MGY0LTk1ODYtZDViNzFmY2RhMzMy";
 var secretNapster = "ZmVmOTNmMGUtNGUwNS00NTNhLWEyY2ItNzYzNmNkZTIwZGY1";
-var queryURLNapster =
-  "http://api.napster.com/v2.2/artists/top?apikey=" + keyNapster + "&limit=100";
+var queryURLNapster = "http://api.napster.com/v2.2/artists/top?apikey=" + keyNapster + "&limit=10";
+var newsFeed = $("#news-feed")
 
 //get the data from Napster
 $.ajax({
-  url: queryURLNapster,
-  method: "GET"
+    url: queryURLNapster,
+    method: "GET"
 }).then(function(response) {
   dataNapster(response);
   dataNapster(response);
