@@ -4,19 +4,18 @@
 
 var keyNapster = "OTBhN2VjODUtZTEwOS00MGY0LTk1ODYtZDViNzFmY2RhMzMy";
 var secretNapster = "ZmVmOTNmMGUtNGUwNS00NTNhLWEyY2ItNzYzNmNkZTIwZGY1";
-var queryURLNapster = "http://api.napster.com/v2.2/artists/top?apikey=" + keyNapster + "&limit=10";
-var newsFeed = $("#news-feed")
+var queryURLNapster =
+  "http://api.napster.com/v2.2/artists/top?apikey=" + keyNapster + "&limit=50";
+var newsFeed = $("#news-feed");
 
 //get the data from Napster
 $.ajax({
-    url: queryURLNapster,
-    method: "GET"
+  url: queryURLNapster,
+  method: "GET"
 }).then(function(response) {
-  dataNapster(response);
-  dataNapster(response);
-  dataNapster(response);
-  dataNapster(response);
-  dataNapster(response);
+  for (var i = 0; i < 5; i++) {
+    dataNapster(response);
+  }
 });
 
 function dataNapster(response) {
@@ -40,10 +39,12 @@ function dataNapster(response) {
     var artistInfoTriviaText = $("<p>").addClass("card-text");
     var artistInfoName = $("<h5>").addClass("card-title");
     var artistTextWrapper = $("<div>").addClass("card-body");
-    var artistInfoImage = $("<img>").addClass("card-img-top");
+    var artistInfoImage = $("<img>")
+      .addClass("card-img-top")
+      .attr("src", link);
 
     artistInfoName.text(randomArtistInfo.name);
-    if (randomArtistInfo.blurbs.length === 0) {
+    if (randomArtistInfo.blurbs.length == 0) {
       artistInfoTriviaText.text = null;
     } else {
       artistInfoTriviaText.text(
@@ -51,12 +52,10 @@ function dataNapster(response) {
       );
     }
 
-    artistInfoImage.attr("src", link);
-
     artistTextWrapper.append(artistInfoName);
     artistTextWrapper.append(artistInfoTriviaText);
     artistInfoCard.append(artistInfoImage);
     artistInfoCard.append(artistTextWrapper);
-    $(".news").append(artistInfoCard);
+    newsFeed.append(artistInfoCard);
   });
 }
