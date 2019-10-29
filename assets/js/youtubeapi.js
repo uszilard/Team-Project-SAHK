@@ -1,7 +1,5 @@
 //
 var youTubeSelect = $("#youTubeBtnFucntion")
-var spotifySelect = $("#spotifyBtnFunction")
-var radioSelect = $("#radioBtnFunction")
 var youtTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U"
 //
 
@@ -70,9 +68,11 @@ function searchByKeyword(searchTerm) {
 function embedVideoOnLoad(data) {
     console.log(data)
     data.items.forEach(item => {
+        var videoContainer = $("<div>");
         var addVideo = $("<iframe>");
         addVideo.addClass("video-stream");
         addVideo.attr('src', 'https://www.youtube.com/embed/' + item.id);
+        videoContainer.append(addVideo);
         youTube.append(addVideo);
     });
 }
@@ -81,11 +81,20 @@ function embedVideoOnLoad(data) {
 // Display video on search
 function embedVideoOnSearch(data) {
     console.log(data)
+    youTube.empty();
     data.items.forEach(item => {
+        var videoContainer = $("<div>");
         var addVideo = $("<iframe>");
         addVideo.addClass("video-stream");
         addVideo.attr('src', 'https://www.youtube.com/embed/' + item.id.videoId);
+        videoContainer.append(addVideo);
         youTube.append(addVideo);
     });
 }
-//Szilard is working on this
+
+
+
+
+
+
+//Szilard is working on this last updated 29.10.2019
