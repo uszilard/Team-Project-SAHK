@@ -12,4 +12,6 @@
 .card {
   width: 20%;
   float: left;
+  border: none;
+  padding: 0 10px;
 }
