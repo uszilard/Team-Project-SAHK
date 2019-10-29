@@ -38,4 +38,4 @@ function searchLastFm(searchTerm) {
 }
 
 
-searchLastFm("Millennium")
+searchLastFm(searchTerm)
