@@ -1,18 +1,11 @@
 var keyNews = "7534abe7f3414a5181ffd55cfd6ce0c2";
 var queryURLNews =
-  "https://newsapi.org/v2/top-headlines?sources=mtv-news&apiKey=7534abe7f3414a5181ffd55cfd6ce0c2";
+  "https://newsapi.org/v2/top-headlines?sources=mtv-news&apiKey=" + keyNews;
 var newsFeed = $("#news-feed");
 
-//get the data from newsapi
-$.ajax({
-  url: queryURLNews,
-  method: "GET"
-}).then(function(response) {
-  getNews(response);
-});
-
-function getNews(response) {
-  for (var i = 0; i < 5; i++) {
+//display the initial content of the news section
+function getNews(response, numberArticles) {
+  for (var i = 0; i < numberArticles; i++) {
     var linkImage = response.articles[i].urlToImage;
     var linkFullArticle = response.articles[i].url;
     //display news articles with jQuery & Bootstrap
@@ -40,3 +33,36 @@ function getNews(response) {
     newsFeed.append(articleInfoCard);
   }
 }
+
+//displaying news mentioning the word/phrase of the user input
+function displayNewsBySearchWord(userInput) {
+  var queryURLuserInputNews =
+    "https://newsapi.org/v2/everything?domains=mtv.com&q=" +
+    userInput +
+    "&apiKey=" +
+    keyNews;
+
+  $.ajax({
+    url: queryURLuserInputNews,
+    method: "GET"
+  }).then(function(response) {
+    newsFeed.empty();
+    getNews(response, response.articles.length);
+  });
+}
+
+//getting the initial content of the news section
+$.ajax({
+  url: queryURLNews,
+  method: "GET"
+}).then(function(response) {
+  console.log(response);
+  getNews(response, 5); //the second parameter is how many articles to display in the section, less for mobile version
+});
+
+// Search Function & displaying relevant news
+$("#search-btn").on("click", function(event) {
+  event.preventDefault();
+  var userSearchInput = $("#user-search").val();
+  displayNewsBySearchWord(userSearchInput);
+});
