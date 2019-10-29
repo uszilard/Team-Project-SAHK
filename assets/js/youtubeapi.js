@@ -2,6 +2,7 @@
 var youTubeSelect = $("#youTubeBtnFucntion")
 var spotifySelect = $("#spotifyBtnFunction")
 var radioSelect = $("#radioBtnFunction")
+var youtTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U"
 //
 
 // Search Function
@@ -20,6 +21,21 @@ function displayMusicInfo() { }
 displayMusicInfo();
 //
 
+//on ppage load gives back the most popular videos
+$(document).ready(function () {
+    $.get(
+        "https://www.googleapis.com/youtube/v3/videos", {
+        key: youtTubeKey,
+        part: "snippet",
+        chart: "mostPopular",
+        videoCategoryId: "0",
+        maxResults: 4,
+    },
+        embedVideo
+    );
+});
+//
+
 
 var youTube = $("#youtube");
 
@@ -30,17 +46,16 @@ function searchByKeyword(searchTerm) {
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
         data: {
-            key: 'AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U',
+            key: youtTubeKey,
             q: searchTerm,
             part: 'snippet',
             maxResults: 4,
             type: 'video',
             videoEmbeddable: true,
         },
-        success: function (data) {
-            embedVideo(data)
-            console.log(data)
-        },
+        success:
+            embedVideo
+        ,
         error: function (response) {
             alert(response + "Check internet connection")
             console.log("Request Failed");
@@ -52,13 +67,11 @@ function searchByKeyword(searchTerm) {
 
 // Display video in page
 function embedVideo(data) {
-
-
     data.items.forEach(item => {
         var addVideo = $("<iframe>");
         addVideo.addClass("video-stream");
         addVideo.attr('src', 'https://www.youtube.com/embed/' + item.id.videoId);
-        $("#youtube").append(addVideo);
+        youTube.append(addVideo);
     });
 }
 //
