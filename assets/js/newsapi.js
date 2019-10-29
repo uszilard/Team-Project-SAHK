@@ -13,6 +13,7 @@ function getNews(response, numberArticles) {
     var articleText = $("<p>")
       .addClass("card-text")
       .text(response.articles[i].description);
+
     var articleTitle = $("<h5>")
       .addClass("card-title")
       .text(response.articles[i].title);
@@ -47,7 +48,7 @@ function displayNewsBySearchWord(userInput) {
     method: "GET"
   }).then(function(response) {
     newsFeed.empty();
-    getNews(response, response.articles.length);
+    getNews(response, 5); //the second parameter is how many articles to display in the section, less for mobile version
   });
 }
 
