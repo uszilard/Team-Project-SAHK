@@ -16,6 +16,12 @@
   padding: 0 10px;
 }
 
+.lastFmBox {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
 @media screen and (max-width: 576px) {
   .card {
     float: none;
@@ -26,5 +32,4 @@
 @media screen and (min-width: 577px) and (max-width: 1024px) {
   .card {
     width: 50%;
-  }
-}
+    }}
