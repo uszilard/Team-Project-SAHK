@@ -23,22 +23,24 @@ displayMusicInfo();
 
 //on ppage load gives back the most popular videos
 $(document).ready(function () {
-    $.get(
-        "https://www.googleapis.com/youtube/v3/videos", {
-        key: youtTubeKey,
-        part: "snippet",
-        chart: "mostPopular",
-        videoCategoryId: "0",
-        maxResults: 4,
-    },
-        embedVideo
-    );
+    $.ajax({
+        type: 'GET',
+        url: "https://www.googleapis.com/youtube/v3/videos",
+        data: {
+            key: youtTubeKey,
+            part: "snippet",
+            chart: "mostPopular",
+            regionCode: "DE",
+            videoCategoryId: "0",
+            maxResults: 4
+        },
+        success:
+            embedVideoOnLoad
+    });
 });
 //
 
-
 var youTube = $("#youtube");
-
 
 // Call the YouTube API
 function searchByKeyword(searchTerm) {
@@ -51,10 +53,10 @@ function searchByKeyword(searchTerm) {
             part: 'snippet',
             maxResults: 4,
             type: 'video',
-            videoEmbeddable: true,
+            videoEmbeddable: true
         },
         success:
-            embedVideo
+            embedVideoOnSearch
         ,
         error: function (response) {
             alert(response + "Check internet connection")
@@ -64,9 +66,21 @@ function searchByKeyword(searchTerm) {
 }
 //
 
+// Display video on load
+function embedVideoOnLoad(data) {
+    console.log(data)
+    data.items.forEach(item => {
+        var addVideo = $("<iframe>");
+        addVideo.addClass("video-stream");
+        addVideo.attr('src', 'https://www.youtube.com/embed/' + item.id);
+        youTube.append(addVideo);
+    });
+}
+//
 
-// Display video in page
-function embedVideo(data) {
+// Display video on search
+function embedVideoOnSearch(data) {
+    console.log(data)
     data.items.forEach(item => {
         var addVideo = $("<iframe>");
         addVideo.addClass("video-stream");
