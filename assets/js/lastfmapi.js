@@ -1,31 +1,16 @@
-//
-$("#search-btn").on("click", function (event) {
-    event.preventDefault();
+function searchLastFm(searchTerm) {
+    var lastFmKey = "110c00d4400e2e57a4f2b2bb856c9c7b";
 
-    var userSearchInput = $("#user-search").val();
+    var queryURL = "http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=" + searchTerm + "&api_key=" + lastFmKey + "&format=json";
 
-    console.log(userSearchInput);
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        $("#lastFm").text(JSON.stringify(response));
+        console.log("lastFmResponse", response);
+    });
+}
 
-    searchByKeyword(userSearchInput);
-});
 
-function displayMusicInfo() { }
-
-displayMusicInfo();
-//
-
-//
-
-// this section does not work I get an error 401 - Spotify block code goes here below:
-//function searchByKeyword(searchTerm) {
-//var spotifyKey = "6rqhFgbbKwnb9MLmUQDhG6";
-//var queryURL = "https://api.spotify.com/v1/search?query=" + searchTerm;
-
-//$.ajax({
-//url: queryURL,
-//method: "GET"
-//}).then(function(response) {
-//$("#youtube").text(JSON.stringify(response));
-//console.log(response);
-//});
-//}//
+searchLastFm("beyonce")
