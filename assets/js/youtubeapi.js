@@ -4,23 +4,8 @@ var spotifySelect = $("#spotifyBtnFunction")
 var radioSelect = $("#radioBtnFunction")
 //
 
-
-// this section is not fully working
-$(youTubeSelect).on("click", function (obj) {
-    console.log(obj)
-
-    if ($(obj).is(":checked")) {
-        alert("Yes checked"); //when checked
-
-    } else {
-        alert("Not checked"); //when not checked
-    }
-});
-//
-
-
 // Search Function
-$("#search-btn").on("click", function (event) {
+$(".youtubeBtn").on("click", function (event) {
     event.preventDefault();
 
     var userSearchInput = $("#user-search").val();
@@ -48,7 +33,7 @@ function searchByKeyword(searchTerm) {
             key: 'AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U',
             q: searchTerm,
             part: 'snippet',
-            maxResults: 5,
+            maxResults: 4,
             type: 'video',
             videoEmbeddable: true,
         },
@@ -57,6 +42,7 @@ function searchByKeyword(searchTerm) {
             console.log(data)
         },
         error: function (response) {
+            alert(response + "Check internet connection")
             console.log("Request Failed");
         }
     });
@@ -66,12 +52,13 @@ function searchByKeyword(searchTerm) {
 
 // Display video in page
 function embedVideo(data) {
-    var addVideo = $("<iframe>");
 
-    addVideo.addClass("video-stream");
 
-    addVideo.attr('src', 'https://www.youtube.com/embed/' + data.items[0].id.videoId);
-
-    $("#youtube").append(addVideo);
+    data.items.forEach(item => {
+        var addVideo = $("<iframe>");
+        addVideo.addClass("video-stream");
+        addVideo.attr('src', 'https://www.youtube.com/embed/' + item.id.videoId);
+        $("#youtube").append(addVideo);
+    });
 }
 //
