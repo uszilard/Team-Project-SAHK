@@ -1,7 +1,6 @@
 //
 var youTubeSelect = $("#youTubeBtnFucntion")
-var spotifySelect = $("#spotifyBtnFunction")
-var radioSelect = $("#radioBtnFunction")
+var youtTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U"
 //
 
 // Search Function
@@ -20,9 +19,26 @@ function displayMusicInfo() { }
 displayMusicInfo();
 //
 
+//on ppage load gives back the most popular videos
+$(document).ready(function () {
+    $.ajax({
+        type: 'GET',
+        url: "https://www.googleapis.com/youtube/v3/videos",
+        data: {
+            key: youtTubeKey,
+            part: "snippet",
+            chart: "mostPopular",
+            regionCode: "DE",
+            videoCategoryId: "0",
+            maxResults: 4
+        },
+        success:
+            embedVideoOnLoad
+    });
+});
+//
 
 var youTube = $("#youtube");
-
 
 // Call the YouTube API
 function searchByKeyword(searchTerm) {
@@ -30,17 +46,16 @@ function searchByKeyword(searchTerm) {
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
         data: {
-            key: 'AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U',
+            key: youtTubeKey,
             q: searchTerm,
             part: 'snippet',
             maxResults: 4,
             type: 'video',
-            videoEmbeddable: true,
+            videoEmbeddable: true
         },
-        success: function (data) {
-            embedVideo(data)
-            console.log(data)
-        },
+        success:
+            embedVideoOnSearch
+        ,
         error: function (response) {
             alert(response + "Check internet connection")
             console.log("Request Failed");
@@ -49,16 +64,37 @@ function searchByKeyword(searchTerm) {
 }
 //
 
-
-// Display video in page
-function embedVideo(data) {
-
-
+// Display video on load
+function embedVideoOnLoad(data) {
+    console.log(data)
     data.items.forEach(item => {
+        var videoContainer = $("<div>");
         var addVideo = $("<iframe>");
         addVideo.addClass("video-stream");
-        addVideo.attr('src', 'https://www.youtube.com/embed/' + item.id.videoId);
-        $("#youtube").append(addVideo);
+        addVideo.attr('src', 'https://www.youtube.com/embed/' + item.id);
+        videoContainer.append(addVideo);
+        youTube.append(addVideo);
     });
 }
 //
+
+// Display video on search
+function embedVideoOnSearch(data) {
+    console.log(data)
+    youTube.empty();
+    data.items.forEach(item => {
+        var videoContainer = $("<div>");
+        var addVideo = $("<iframe>");
+        addVideo.addClass("video-stream");
+        addVideo.attr('src', 'https://www.youtube.com/embed/' + item.id.videoId);
+        videoContainer.append(addVideo);
+        youTube.append(addVideo);
+    });
+}
+
+
+
+
+
+
+//Szilard is working on this last updated 29.10.2019
