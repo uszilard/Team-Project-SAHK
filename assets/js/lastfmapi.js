@@ -1,29 +1,29 @@
 function searchLastFm(searchTerm) {
     var lastFmKey = "110c00d4400e2e57a4f2b2bb856c9c7b";
 
-    var queryURL = "http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=" + searchTerm + "&api_key=" + lastFmKey + "&format=json&limit=5";
+    var queryURL = "http://ws.audioscrobbler.com/2.0/?method=album.search&album=" + searchTerm + "&api_key=" + lastFmKey + "&format=json&limit=4";
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
 
-        response.results.artistmatches.artist.forEach((element, i) => {
+        response.results.albummatches.album.forEach((element, i) => {
             var lastFm = $("#lastFm")
-            var artistBox = $("<div>")
+            var albumBox = $("<div>")
 
-            var artistTitle = $("<p>")
+            var albumTitle = $("<p>")
 
-            artistTitle.text(element.name)
+            albumTitle.text(element.name)
 
-            var artistImage = $("<img>")
+            var albumImage = $("<img>")
 
-            artistImage.attr("src", element.image[1]["#text"])
+            albumImage.attr("src", element.image[1]["#text"])
 
-            artistBox.append(artistTitle)
-            artistBox.append(artistImage)
+            albumBox.append(albumTitle)
+            albumBox.append(albumImage)
 
-            lastFm.append(artistBox)
+            lastFm.append(albumBox)
 
             var htmlBreak = $("<br>")
             lastFm.append(htmlBreak)
@@ -38,4 +38,4 @@ function searchLastFm(searchTerm) {
 }
 
 
-searchLastFm("beyonce")
+searchLastFm("Millennium")
