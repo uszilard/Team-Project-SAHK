@@ -24,7 +24,8 @@ function getNews(response, numberArticles) {
     var articleFullLink = $("<a>")
       .addClass("card-link")
       .attr("href", linkFullArticle)
-      .text("Continue to the full article...");
+      .attr("target", "_blank")
+      .text("To the full article on Mtv.com ->");
 
     articleTextWrapper.append(articleTitle);
     articleTextWrapper.append(articleText);
@@ -58,7 +59,7 @@ $.ajax({
   method: "GET"
 }).then(function(response) {
   console.log(response);
-  getNews(response, 5); //the second parameter is how many articles to display in the section, less for mobile version
+  getNews(response, 4); //the second parameter is how many articles to display in the section, less for mobile version
 });
 
 // Search Function & displaying relevant news
