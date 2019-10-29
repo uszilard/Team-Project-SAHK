@@ -1,4 +1,4 @@
-.gray {
+.row {
   height: 150px;
   background-color: rgba(255, 0, 0, 0.1);
   margin: 0.5%;
@@ -32,4 +32,5 @@
 @media screen and (min-width: 577px) and (max-width: 1024px) {
   .card {
     width: 50%;
-    }}
+  }
+}
