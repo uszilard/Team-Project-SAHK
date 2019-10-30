@@ -49,7 +49,8 @@ function displayNewsBySearchWord(userInput) {
     method: "GET"
   }).then(function(response) {
     newsFeed.empty();
-    getNews(response, 5); //the second parameter is how many articles to display in the section, less for mobile version
+    $("#news-title").text("Latest headlines about " + userInput);
+    getNews(response, 4); //the second parameter is how many articles to display in the section, less for mobile version
   });
 }
 
@@ -65,6 +66,6 @@ $.ajax({
 // Search Function & displaying relevant news
 $("#search-btn").on("click", function(event) {
   event.preventDefault();
-  var userSearchInput = $("#user-search").val();
-  displayNewsBySearchWord(userSearchInput);
+  var searchTerm = $("#user-search").val();
+  displayNewsBySearchWord(searchTerm);
 });
