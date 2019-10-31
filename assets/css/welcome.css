@@ -6,4 +6,23 @@ body {
     rgba(236, 211, 222, 1) 0%,
     rgb(132, 224, 236) 100%
   );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Sirin Stencil", cursive;
+  padding: 20%;
+}
+
+p {
+  font-size: smaller;
+}
+
+.btn:hover {
+  font-size: larger;
+  background-color: rgb(241, 231, 235);
+}
+
+@media screen and (max-width: 769px) {
+  body {
+    padding-top: 50%;
+  }
 }
