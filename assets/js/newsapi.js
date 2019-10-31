@@ -20,12 +20,13 @@ function getNews(response, numberArticles) {
     var articleTextWrapper = $("<div>").addClass("card-body");
     var articleImage = $("<img>")
       .addClass("card-img-top")
-      .attr("src", linkImage);
+      .attr("src", linkImage)
+      .attr("alt", "no image");
     var articleFullLink = $("<a>")
       .addClass("card-link")
       .attr("href", linkFullArticle)
       .attr("target", "_blank")
-      .text("To the full article on Mtv.com ->");
+      .text("To the full article ->");
 
     articleTextWrapper.append(articleTitle);
     articleTextWrapper.append(articleText);
@@ -39,7 +40,7 @@ function getNews(response, numberArticles) {
 //displaying news mentioning the word/phrase of the user input
 function displayNewsBySearchWord(userInput) {
   var queryURLuserInputNews =
-    "https://newsapi.org/v2/everything?domains=mtv.com&q=" +
+    "https://newsapi.org/v2/everything?domains=mtv.com,mtv.co.uk&q=" +
     userInput +
     "&apiKey=" +
     keyNews;
@@ -49,7 +50,7 @@ function displayNewsBySearchWord(userInput) {
     method: "GET"
   }).then(function(response) {
     newsFeed.empty();
-    $("#news-title").text("Latest headlines about " + userInput);
+    $("#news-title").text("Latest headlines about '" + userInput + "'");
     getNews(response, 4); //the second parameter is how many articles to display in the section, less for mobile version
   });
 }
