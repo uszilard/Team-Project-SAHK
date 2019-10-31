@@ -3,20 +3,6 @@ var youTubeSelect = $("#youTubeBtnFucntion")
 var youtTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U"
 //
 
-// Search Function
-$(".youtubeBtn").on("click", function (event) {
-    event.preventDefault();
-
-    var userSearchInput = $("#user-search").val();
-
-    console.log(userSearchInput);
-
-    searchByKeyword(userSearchInput);
-});
-
-function displayMusicInfo() { }
-
-displayMusicInfo();
 //
 
 //on ppage load gives back the most popular videos
@@ -28,7 +14,6 @@ $(document).ready(function () {
             key: youtTubeKey,
             part: "snippet",
             chart: "mostPopular",
-            regionCode: "DE",
             videoCategoryId: "0",
             maxResults: 4
         },
@@ -38,10 +23,12 @@ $(document).ready(function () {
 });
 //
 
+//
 var youTube = $("#youtube");
+//
 
 // Call the YouTube API
-function searchByKeyword(searchTerm) {
+function searchYouTubeByKeyword(searchTerm) {
     $.ajax({
         type: 'GET',
         url: 'https://www.googleapis.com/youtube/v3/search',
@@ -91,9 +78,7 @@ function embedVideoOnSearch(data) {
         youTube.append(addVideo);
     });
 }
-
-
-
+//
 
 
 
