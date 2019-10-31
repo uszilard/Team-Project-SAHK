@@ -1,34 +1,36 @@
-function searchLastFm(searchTerm) {
-  var lastFmKey = "110c00d4400e2e57a4f2b2bb856c9c7b";
 
-  var queryURL =
-    "http://ws.audioscrobbler.com/2.0/?method=album.search&album=" +
-    searchTerm +
-    "&api_key=" +
-    lastFmKey +
-    "&format=json&limit=4";
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    $("#lastFm").empty();
-    response.results.albummatches.album.forEach(element => {
-      var lastFm = $("#lastFm");
-      var albumBox = $("<div>");
-      var albumTitle = $("<p>");
-      var albumImage = $("<img>");
+function searchLastFmByKeyword(searchTerm) {
+    var lastFmKey = "110c00d4400e2e57a4f2b2bb856c9c7b";
 
-      albumTitle.text(element.name);
-      albumImage.attr("src", element.image[2]["#text"]);
+    var queryURL =
+        "http://ws.audioscrobbler.com/2.0/?method=album.search&album=" +
+        searchTerm +
+        "&api_key=" +
+        lastFmKey +
+        "&format=json&limit=4";
 
-      albumBox.append(albumTitle);
-      albumBox.append(albumImage);
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        $("#lastFm").empty();
+        response.results.albummatches.album.forEach(element => {
+            var lastFm = $("#lastFm");
+            var albumBox = $("<div>");
+            var albumTitle = $("<p>");
+            var albumImage = $("<img>");
 
-      lastFm.append(albumBox);
+            //albumTitle.text(element.name);
+            albumImage.attr("src", element.image[2]["#text"]);
+
+            albumBox.append(albumTitle);
+            albumBox.append(albumImage);
+
+            lastFm.append(albumBox);
+        });
+        console.log("lastFmResponse", response);
     });
-    console.log("lastFmResponse", response);
-  });
 }
 
-searchLastFm(searchTerm);
+
