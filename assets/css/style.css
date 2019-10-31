@@ -1,7 +1,7 @@
 .row {
-  height: 150px;
   background-color: rgba(255, 0, 0, 0.1);
-  margin: 0.5%;
+  margin: 5px;
+  height: 150px;
 }
 
 .form-inline {
@@ -9,17 +9,17 @@
   margin-right: 10px;
 }
 
+.lastFmBox {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
 .card {
   width: 25%;
   float: left;
   border: none;
   padding: 0 10px;
-}
-
-.lastFmBox {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
 }
 
 @media screen and (max-width: 576px) {
