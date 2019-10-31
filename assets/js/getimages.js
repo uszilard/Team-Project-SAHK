@@ -13,9 +13,10 @@ function getImagesData(searchTerm) {
     }).then(function (response) {
         console.log(response)
         response.photos.forEach((photo) => {
+            $("#pictures").empty()
 
             var photoBox = $("<img>")
-            photoBox.atr("src", photo.src.small)
+            photoBox.attr("src", photo.src.small)
 
             $("#pictures").append(photoBox)
 
