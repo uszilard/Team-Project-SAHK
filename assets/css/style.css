@@ -3,29 +3,29 @@ body {
   color: #0d1117;
 }
 
-.navbar-brand {
-  font-family: "Sirin Stencil", cursive;
+iframe {
+  border: none;
 }
 
-.row {
-  margin: 5px;
+.navbar-brand {
+  font-family: "Sirin Stencil", cursive;
 }
 
 .form-inline {
   margin-left: auto;
   margin-right: 10px;
 }
-/* 
+
 .lastFmBox {
-  display: flex;
-  justify-content: space-between;
+  float: right;
   padding: 10px;
-} */
+}
 
 .card {
   width: 50%;
   float: left;
   border: none;
+  padding: 5px;
 }
 
 @media screen and (max-width: 576px) {

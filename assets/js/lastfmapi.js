@@ -1,4 +1,5 @@
 var lastFmKey = "110c00d4400e2e57a4f2b2bb856c9c7b";
+var lastFm = $("#lastFm");
 
 //
 function fetchData(queryURL) {
@@ -17,18 +18,15 @@ function fetchData(queryURL) {
 
     result.forEach(element => {
       console.log(element);
-      var lastFm = $("#lastFm");
-      var albumBox = $("<div>")
-        .addClass("col")
-        .attr("float", "left");
-      var albumTitle = $("<p class='classname'>");
+      var albumBox = $("<div>").addClass("col");
+      var albumTitle = $("<p>");
       var albumImage = $("<img>");
 
       albumTitle.text(element.name);
       albumImage.attr("src", element.image[2]["#text"]);
 
-      albumBox.append(albumTitle);
       albumBox.append(albumImage);
+      albumBox.append(albumTitle);
       lastFm.append(albumBox);
     });
     console.log("lastFmResponse", response);
@@ -49,6 +47,6 @@ function searchLastFmByKeyword(searchTerm) {
     searchTerm +
     "&api_key=" +
     lastFmKey +
-    "&format=json&limit=3";
+    "&format=json&limit=4";
   fetchData(queryURL);
 }
