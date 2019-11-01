@@ -18,16 +18,17 @@ function fetchData(queryURL) {
     result.forEach(element => {
       console.log(element);
       var lastFm = $("#lastFm");
-      var albumBox = $("<div>");
+      var albumBox = $("<div>")
+        .addClass("col")
+        .attr("float", "left");
       var albumTitle = $("<p class='classname'>");
       var albumImage = $("<img>");
 
-      //albumTitle.text(element.name);
+      albumTitle.text(element.name);
       albumImage.attr("src", element.image[2]["#text"]);
 
       albumBox.append(albumTitle);
       albumBox.append(albumImage);
-
       lastFm.append(albumBox);
     });
     console.log("lastFmResponse", response);
@@ -38,7 +39,7 @@ $(document).ready(function() {
   var queryURL =
     "http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=rj&api_key=" +
     lastFmKey +
-    "&format=json&limit=3";
+    "&format=json&limit=4";
   fetchData(queryURL);
 });
 
