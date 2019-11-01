@@ -3,9 +3,10 @@ body {
   background: rgb(236, 211, 222);
   background: radial-gradient(
     circle,
-    rgba(236, 211, 222, 1) 0%,
+    rgb(253, 222, 235) 0%,
     rgb(132, 224, 236) 100%
   );
+  /* background: radial-gradient(circle, #fea49f 0%, #101357 100%); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Sirin Stencil", cursive;
@@ -18,7 +19,6 @@ p {
 
 .btn:hover {
   font-size: larger;
-  background-color: rgb(241, 231, 235);
 }
 
 @media screen and (max-width: 769px) {

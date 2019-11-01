@@ -12,11 +12,11 @@ function getNews(response, numberArticles) {
     var articleInfoCard = $("<div>").addClass("card");
     var articleText = $("<p>")
       .addClass("card-text")
-      .text(response.articles[i].description);
-
-    var articleTitle = $("<h5>")
-      .addClass("card-title")
       .text(response.articles[i].title);
+
+    // var articleTitle = $("<h5>")
+    //   .addClass("card-title")
+    //   .text(response.articles[i].title);
     var articleTextWrapper = $("<div>").addClass("card-body");
     var articleImage = $("<img>")
       .addClass("card-img-top")
@@ -28,7 +28,7 @@ function getNews(response, numberArticles) {
       .attr("target", "_blank")
       .text("To the full article ->");
 
-    articleTextWrapper.append(articleTitle);
+    // articleTextWrapper.append(articleTitle);
     articleTextWrapper.append(articleText);
     articleTextWrapper.append(articleFullLink);
     articleInfoCard.append(articleImage);
