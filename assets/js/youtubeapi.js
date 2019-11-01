@@ -67,8 +67,8 @@ function embedVideoOnSearch(data) {
   console.log(data);
   youTube.empty();
   data.items.forEach(item => {
-    var videoContainer = $("<div>");
-    var addVideo = $("<iframe>");
+    var videoContainer = $("<div>").addClass("row");
+    var addVideo = $("<iframe>").addClass("col-6");
     addVideo.addClass("video-stream");
     addVideo.attr("src", "https://www.youtube.com/embed/" + item.id.videoId);
     videoContainer.append(addVideo);

@@ -15,10 +15,20 @@
     <nav class="navbar navbar-light bg-transparent">
         <a class="navbar-brand">SAHK Music & Co</a>
 
-        <form class="form-inline">
-            <input type="text" id="user-search" class="form-control" type="search" placeholder="Search" />
-            <button id="search-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
+<!-- add-html-skeleton -->
+      <form class="form-inline">
+        <input
+          type="text"
+          id="user-search"
+          class="form-control"
+          type="search"
+          placeholder="Type here..."
+        />
+        <button
+          id="search-btn"
+          class="btn btn-outline-success my-2 my-sm-0"
+          type="submit"
+        > Search
         </button>
         </form>
     </nav>
@@ -29,9 +39,9 @@
         <div id="youtube" class="col-8">
           <h1>Youtube Videos</h1>
         </div>
-        <div id="lastFm" class="col-4">
+        <div class="col-4 lastFmBox">
           <h1>Top Albums</h1>
-          Last.fm Box from Ana
+          <div id="lastFm" class="row"></div>
         </div>
 
         <!-- 2nd main row with images & news; the carousel is column 1; news are column 2; the content of the sections is to be nested within these columns  -->
