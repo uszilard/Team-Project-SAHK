@@ -3,139 +3,26 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>SAHK</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Rock+Salt|Sirin+Stencil&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/welcome.css" />
+    <title>Welcome!</title>
 </head>
 
 <body>
-    <nav class="navbar">
-        <a class="navbar-brand">SAHK Music & Co</a>
-
-        <!-- add-html-skeleton -->
-        <form class="form-inline">
-            <input type="text" id="user-search" class="form-control" type="search" placeholder="Type here..." />
-            <button id="search-btn" class="btn my-2 my-sm-0" type="submit">
-                Search
-            </button>
-        </form>
-    </nav>
-
     <div class="container-fluid">
-
-        <!-- 1st main row with videos & albums - Youtube is column 1; Last.fm is column 2; the content of the sections is to be nested within these columns -->
-
-        <div class="row" id="title-row">
-
-            <h1 id="search-result" class="col-8">Trending Videos</h1>
-
-            <h1 class="col-4">Top Albums & Titles</h1>
-
-        </div>
-
-        <div class="row" id="first-row">
-
-            <div id="youtube" class="col-8">
-
-            </div>
-
-            <div class="col-4 lastFmBox" id="last-fm-box">
-
-                <div id="lastFm" class="row"></div>
-            </div>
-        </div>
-
-        <!-- 2nd main row with images & news; the carousel is column 1; news are column 2; the content of the sections is to be nested within these columns  -->
-
-
-
-        <div class="row" id="title-row">
-
-            <h1 class="col-4">Latest headlines</h1>
-
-            <h1 class="col-8">Here comes the picture carousel from Karan</h1>
-
-        </div>
-
-
-
-
-        <div class="row" id="second-row">
-
-            <div class="col-4" id="news-feed"></div>
-
-            <div id="pictures" class="col-8">
-
-                <!-- here is the code from Bootstrap, should be adjusted to our needs -->
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400"
-                                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                                focusable="false" role="img" aria-label="Placeholder: First slide">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#777"></rect>
-                                <text x="50%" y="50%" fill="#555" dy=".3em">First slide</text>
-                            </svg>
-                        </div>
-                        <div class="carousel-item active">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400"
-                                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                                focusable="false" role="img" aria-label="Placeholder: Second slide">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#666"></rect>
-                                <text x="50%" y="50%" fill="#444" dy=".3em">
-                                    Second slide
-                                </text>
-                            </svg>
-                        </div>
-                        <div class="carousel-item">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400"
-                                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                                focusable="false" role="img" aria-label="Placeholder: Third slide">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#555"></rect>
-                                <text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text>
-                            </svg>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
+        <!-- we need this row in the center of the page? -->
+        <div class="row" id="enter-page">
+            <div class="col text-center">
+                <h2>SAHK Music & Co.</h2>
+                <a href="mainpage.html"><button class="btn btn-transparent">Enter</button></a>
+                <p>at your own risk</p>
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script src="assets/js/newsapi.js"></script>
-
-    <script src="assets/js/lastfmapi.js"></script>
-
-    <script src="assets/js/youtubeapi.js"></script>
-
-    <script src="assets/js/getimages.js"></script>
-
-    <script src="assets/js/index.js"></script>
 </body>
 
 </html>
