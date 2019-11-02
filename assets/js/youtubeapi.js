@@ -15,7 +15,7 @@ $(document).ready(function () {
             part: "snippet",
             chart: "mostPopular",
             videoCategoryId: "0",
-            maxResults: 6
+            maxResults: 8
         },
         success: embedVideoOnLoad
     });
@@ -35,7 +35,7 @@ function searchYouTubeByKeyword(searchTerm) {
             key: youtTubeKey,
             q: searchTerm,
             part: "snippet",
-            maxResults: 6,
+            maxResults: 8,
             type: "video",
             videoEmbeddable: true
         },

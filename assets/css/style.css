@@ -14,6 +14,11 @@ body {
   margin-bottom: 10px;
 }
 
+#second-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 iframe {
   border: none;
 }
@@ -45,7 +50,7 @@ nav {
 
 .lastFmBox {
   float: right;
-  padding: 10px;
+  padding: 0;
 }
 
 .card {
