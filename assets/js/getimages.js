@@ -10,17 +10,27 @@ function getImagesData(searchTerm) {
         }
 
     }).then(function (response) {
-        console.log(response)
+        console.log("i am responding to you", response)
         $("#carousel-inner").empty()
 
-        response.photos.forEach((photo) => {
+        response.photos.forEach((photo, i) => {
 
             var carouselItem = $("<div>")
-            carouselItem.attr("class", "carousel-item active")
+            carouselItem.attr("class", "carousel-item")
 
             var photoBox = $("<img>")
-            photoBox.attr("src", photo.src.small)
-            photoBox.attr("class", "mg-fluid d-block d-none d-md-block");
+            photoBox.attr("src", photo.src.medium)
+            photoBox.attr("class", "img-fluid d-block w-100");
+            photoBox.attr("alt", photo.id)
+
+            if (i === 0) {
+                photoBox.attr("class", "img-fluid d-block w-100 active");
+
+            }
+
+            carouselItem.append(photoBox)
+
+            console.log($(".carousel-inner"))
 
 
 
@@ -32,7 +42,3 @@ function getImagesData(searchTerm) {
         });
     });
 };
-
-// <div class="carousel-item active">
-    //<img src="..." class="d-block w-100" alt="..." />
-//</div>
