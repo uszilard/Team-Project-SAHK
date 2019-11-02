@@ -33,11 +33,14 @@ function fetchData(queryURL) {
     });
 }
 
+var resultsNum = 6
+
+
 $(document).ready(function () {
     var queryURL =
         "http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=rj&api_key=" +
         lastFmKey +
-        "&format=json&limit=9";
+        `&format=json&limit=${resultsNum}`
     fetchData(queryURL);
 });
 
@@ -47,6 +50,6 @@ function searchLastFmByKeyword(searchTerm) {
         searchTerm +
         "&api_key=" +
         lastFmKey +
-        "&format=json&limit=4";
+        `&format=json&limit=${resultsNum}`
     fetchData(queryURL);
 }
