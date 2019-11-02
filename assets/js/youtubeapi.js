@@ -15,7 +15,7 @@ $(document).ready(function () {
             part: "snippet",
             chart: "mostPopular",
             videoCategoryId: "0",
-            maxResults: 4
+            maxResults: 6
         },
         success: embedVideoOnLoad
     });
@@ -35,7 +35,7 @@ function searchYouTubeByKeyword(searchTerm) {
             key: youtTubeKey,
             q: searchTerm,
             part: "snippet",
-            maxResults: 4,
+            maxResults: 6,
             type: "video",
             videoEmbeddable: true
         },
@@ -52,11 +52,9 @@ function searchYouTubeByKeyword(searchTerm) {
 function embedVideoOnLoad(data) {
     console.log(data);
     data.items.forEach(item => {
-        var videoContainer = $("<div>").addClass("row");
         var addVideo = $("<iframe>").addClass("col-6");
         addVideo.addClass("video-stream");
         addVideo.attr("src", "https://www.youtube.com/embed/" + item.id);
-        videoContainer.append(addVideo);
         youTube.append(addVideo);
     });
 }
@@ -66,15 +64,18 @@ function embedVideoOnLoad(data) {
 function embedVideoOnSearch(data) {
     console.log(data);
     youTube.empty();
+
+    $("#search-result").html("<h1>" + "Search Result" + "</h1>");
+
+
+
     data.items.forEach(item => {
-        var videoContainer = $("<div>").addClass("row");
         var addVideo = $("<iframe>").addClass("col-6");
         addVideo.addClass("video-stream");
         addVideo.attr("src", "https://www.youtube.com/embed/" + item.id.videoId);
-        videoContainer.append(addVideo);
         youTube.append(addVideo);
     });
 }
 //
 
-//Szilard is working on this last updated 29.10.2019
+//Szilard is working on this last updated 02.11.2019
