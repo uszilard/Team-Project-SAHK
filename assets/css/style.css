@@ -4,9 +4,18 @@ body {
   background-image: url("p5.png");
 }
 
+#title-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#first-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 iframe {
   border: none;
-  padding-top: 3px;
 }
 
 #search-btn {
