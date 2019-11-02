@@ -1,14 +1,32 @@
 body {
   background-color: white;
   color: #0d1117;
+  background-image: url("p5.png");
 }
 
 iframe {
   border: none;
+  padding-top: 3px;
+}
+
+#search-btn {
+  color: white;
+  border: 1px solid;
+  border-color: aliceblue;
+}
+
+#user-search {
+  margin: 5px;
 }
 
 .navbar-brand {
   font-family: "Sirin Stencil", cursive;
+  font-size: 30px;
+}
+
+nav {
+  background-color: #101357;
+  color: #fea49f;
 }
 
 .form-inline {

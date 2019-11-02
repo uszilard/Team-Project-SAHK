@@ -1,12 +1,12 @@
 body {
   height: 100%;
   background: rgb(236, 211, 222);
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle,
     rgb(253, 222, 235) 0%,
     rgb(132, 224, 236) 100%
-  );
-  /* background: radial-gradient(circle, #fea49f 0%, #101357 100%); */
+  ); */
+  background: radial-gradient(circle, #fea49f 0%, #101357 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Sirin Stencil", cursive;
