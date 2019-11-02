@@ -23,7 +23,7 @@ function fetchData(queryURL) {
             var albumImage = $("<img>");
 
             albumTitle.text(element.name);
-            albumImage.attr("src", element.image[3]["#text"]);
+            albumImage.attr("src", element.image[2]["#text"]);
 
             albumBox.append(albumImage);
             albumBox.append(albumTitle);
@@ -37,7 +37,7 @@ $(document).ready(function () {
     var queryURL =
         "http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=rj&api_key=" +
         lastFmKey +
-        "&format=json&limit=4";
+        "&format=json&limit=9";
     fetchData(queryURL);
 });
 

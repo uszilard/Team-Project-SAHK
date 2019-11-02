@@ -10,7 +10,7 @@ $("#search-btn").on("click", function (event) {
 
     searchYouTubeByKeyword(userSearchInput);
     searchLastFmByKeyword(userSearchInput);
-    getImagesData(userSearchInput);
+    //getImagesData(userSearchInput);
 });
 //
 
