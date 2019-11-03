@@ -47,7 +47,7 @@ function searchYouTubeByKeyword(searchTerm) {
 function embedVideoOnLoad(data) {
     console.log(data);
     data.items.forEach(item => {
-        var addVideo = $("<iframe>").addClass("col-6");
+        var addVideo = $("<iframe>").addClass("col-6").attr({ "allowfullscreen": "allowfullscreen", "frameborder": "0" });
         addVideo.addClass("video-stream");
         addVideo.attr("src", "https://www.youtube.com/embed/" + item.id);
         youTube.append(addVideo);
@@ -61,7 +61,7 @@ function embedVideoOnSearch(data) {
     youTube.empty();
     $("#search-result").html("<h1>" + "Search Result" + "</h1>");
     data.items.forEach(item => {
-        var addVideo = $("<iframe>").addClass("col-6");
+        var addVideo = $("<iframe>").addClass("col-6").attr({ "allowfullscreen": "allowfullscreen", "frameborder": "0" });
         addVideo.addClass("video-stream");
         addVideo.attr("src", "https://www.youtube.com/embed/" + item.id.videoId);
         youTube.append(addVideo);
