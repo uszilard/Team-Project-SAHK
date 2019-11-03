@@ -51,7 +51,14 @@ function displayNewsBySearchWord(userInput) {
   }).then(function(response) {
     newsFeed.empty();
     $("#news-title").text("Latest headlines about '" + userInput + "'");
-    getNews(response, 4); //the second parameter is how many articles to display in the section, less for mobile version
+    if (response.totalResults == 0) {
+      $("#news-feed").text(
+        userInput +
+          " has been under the radar for a while now... Sorry about that! Try again in a few months!"
+      );
+    } else {
+      getNews(response, 4); //the second parameter is how many articles to display in the section, less for mobile version
+    }
   });
 }
 
