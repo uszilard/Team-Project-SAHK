@@ -7,11 +7,16 @@ body {
 nav {
   background-color: #101357;
   color: #fea49f;
+  border-bottom: 3px #fea49f solid;
 }
 
 .navbar-brand {
   font-family: "Sirin Stencil", cursive;
   font-size: 30px;
+}
+
+h1 {
+  font-family: "Sirin Stencil", cursive;
 }
 
 iframe {
@@ -26,34 +31,24 @@ iframe {
 .lastFmBox {
   float: right;
   padding: 0;
+  text-align: center;
+  font-weight: 500;
 }
 
-.card {
-  width: 100%;
-  float: left;
-  border: none;
-  padding: 5px;
+.no-news {
+  text-align: center;
+  font-weight: 500;
 }
 
-#title-row {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-#first-row {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
+#title-row,
+#first-row,
 #second-row {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 #search-btn {
   color: #fea49f;
-  border: 1px solid;
-  border-color: #fea49f;
+  border: 1px #fea49f solid;
 }
 
 #user-search {

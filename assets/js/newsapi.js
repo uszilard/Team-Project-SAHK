@@ -4,8 +4,8 @@ var queryURLNews =
 var newsFeed = $("#news-feed");
 
 //display the initial content of the news section
-function getNews(response, numberArticles) {
-  for (var i = 0; i < numberArticles; i++) {
+function getNews(response, numberOfArticles) {
+  for (var i = 0; i < numberOfArticles; i++) {
     var linkImage = response.articles[i].urlToImage;
     var linkFullArticle = response.articles[i].url;
     //display news articles with jQuery & Bootstrap
@@ -46,14 +46,21 @@ function displayNewsBySearchWord(userInput) {
     method: "GET"
   }).then(function(response) {
     newsFeed.empty();
-    $("#news-title").text("Latest headlines about '" + userInput + "'");
+    $("#news-title").text("'" + userInput + "'" + " in the news");
     if (response.totalResults == 0) {
-      $("#news-feed").text(
-        userInput +
-          " has been under the radar for a while now... Sorry about that! Try again in a few months!"
+      var noNewsText = $("<h4>").addClass("no-news");
+      var noNewsImage = $("<img>")
+        .attr("src", "assets/css/notfound.jpg")
+        .attr("width", "100%");
+      noNewsText.text(
+        "'" +
+          userInput +
+          "' has been under the radar for a while now... Sorry about that! Try again in a few months!"
       );
+      newsFeed.append(noNewsText);
+      newsFeed.append(noNewsImage);
     } else {
-      getNews(response, 4); //the second parameter is how many articles to display in the section, less for mobile version
+      getNews(response, 3);
     }
   });
 }
@@ -63,13 +70,24 @@ $.ajax({
   url: queryURLNews,
   method: "GET"
 }).then(function(response) {
-  console.log(response);
-  getNews(response, 3); //the second parameter is how many articles to display in the section, less for mobile version
+  getNews(response, 3);
 });
 
-// Search Function & displaying relevant news
+//Displaying relevant news on search
 $("#search-btn").on("click", function(event) {
   event.preventDefault();
   var searchTerm = $("#user-search").val();
   displayNewsBySearchWord(searchTerm);
 });
+
+function noNews() {
+  var noNewsText = $("<p>").addClass("no-news");
+  var noNewsImage = $("<img>").attr("src", "../css/notfound.jpg");
+  noNewsText.text(
+    "'" +
+      userInput +
+      "' has been under the radar for a while now... Sorry about that! Try again in a few months!"
+  );
+  newsFeed.append(noNewsImage);
+  newsFeed.append(noNewsText);
+}
