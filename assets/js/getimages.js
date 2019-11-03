@@ -13,7 +13,7 @@ $(document).ready(function() {
     }
   }).then(function(response) {
     console.log("i am responding to you", response);
-    var imageurl = response.photos[0].src.original;
+    var imageurl = response.photos[0].src.large;
     console.log(imageurl);
     $("#first-slide").attr("src", imageurl);
   });

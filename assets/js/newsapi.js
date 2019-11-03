@@ -9,17 +9,14 @@ function getNews(response, numberArticles) {
     var linkImage = response.articles[i].urlToImage;
     var linkFullArticle = response.articles[i].url;
     //display news articles with jQuery & Bootstrap
-    var articleInfoCard = $("<div>").addClass("card");
+    var articleInfoCard = $("<div>").addClass("row mb-3");
     var articleText = $("<p>")
       .addClass("card-text")
       .text(response.articles[i].title);
 
-    // var articleTitle = $("<h5>")
-    //   .addClass("card-title")
-    //   .text(response.articles[i].title);
-    var articleTextWrapper = $("<div>").addClass("card-body");
+    var articleTextWrapper = $("<div>").addClass("card-body col-md-6");
     var articleImage = $("<img>")
-      .addClass("card-img-top")
+      .addClass("card-img col-md-6")
       .attr("src", linkImage)
       .attr("alt", "no image");
     var articleFullLink = $("<a>")
@@ -28,7 +25,6 @@ function getNews(response, numberArticles) {
       .attr("target", "_blank")
       .text("To the full article ->");
 
-    // articleTextWrapper.append(articleTitle);
     articleTextWrapper.append(articleText);
     articleTextWrapper.append(articleFullLink);
     articleInfoCard.append(articleImage);
@@ -68,7 +64,7 @@ $.ajax({
   method: "GET"
 }).then(function(response) {
   console.log(response);
-  getNews(response, 4); //the second parameter is how many articles to display in the section, less for mobile version
+  getNews(response, 3); //the second parameter is how many articles to display in the section, less for mobile version
 });
 
 // Search Function & displaying relevant news
