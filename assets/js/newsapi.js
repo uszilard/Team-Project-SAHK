@@ -48,7 +48,7 @@ function displayNewsBySearchWord(userInput) {
     newsFeed.empty();
     $("#news-title").text("'" + userInput + "'" + " in the news");
     if (response.totalResults == 0) {
-      var noNewsText = $("<h4>").addClass("no-news");
+      var noNewsText = $("<p>").addClass("no-news");
       var noNewsImage = $("<img>")
         .attr("src", "assets/css/notfound.jpg")
         .attr("width", "100%");
@@ -57,8 +57,8 @@ function displayNewsBySearchWord(userInput) {
           userInput +
           "' has been under the radar for a while now... Sorry about that! Try again in a few months!"
       );
-      newsFeed.append(noNewsText);
       newsFeed.append(noNewsImage);
+      newsFeed.append(noNewsText);
     } else {
       getNews(response, 3);
     }
@@ -79,15 +79,3 @@ $("#search-btn").on("click", function(event) {
   var searchTerm = $("#user-search").val();
   displayNewsBySearchWord(searchTerm);
 });
-
-function noNews() {
-  var noNewsText = $("<p>").addClass("no-news");
-  var noNewsImage = $("<img>").attr("src", "../css/notfound.jpg");
-  noNewsText.text(
-    "'" +
-      userInput +
-      "' has been under the radar for a while now... Sorry about that! Try again in a few months!"
-  );
-  newsFeed.append(noNewsImage);
-  newsFeed.append(noNewsText);
-}
