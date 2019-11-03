@@ -3,8 +3,6 @@ var youTubeSelect = $("#youTubeBtnFucntion");
 var youtTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U";
 //
 
-//
-
 //on ppage load gives back the most popular videos
 $(document).ready(function () {
     $.ajax({
@@ -22,11 +20,8 @@ $(document).ready(function () {
 });
 //
 
-//
-var youTube = $("#youtube");
-//
-
 // Call the YouTube API
+var youTube = $("#youtube");
 function searchYouTubeByKeyword(searchTerm) {
     $.ajax({
         type: "GET",
@@ -64,11 +59,7 @@ function embedVideoOnLoad(data) {
 function embedVideoOnSearch(data) {
     console.log(data);
     youTube.empty();
-
     $("#search-result").html("<h1>" + "Search Result" + "</h1>");
-
-
-
     data.items.forEach(item => {
         var addVideo = $("<iframe>").addClass("col-6");
         addVideo.addClass("video-stream");
@@ -78,4 +69,4 @@ function embedVideoOnSearch(data) {
 }
 //
 
-//Szilard is working on this last updated 02.11.2019
+//Szilard is working on this last updated 03.11.2019
