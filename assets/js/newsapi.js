@@ -4,22 +4,19 @@ var queryURLNews =
 var newsFeed = $("#news-feed");
 
 //display the initial content of the news section
-function getNews(response, numberArticles) {
-  for (var i = 0; i < numberArticles; i++) {
+function getNews(response, numberOfArticles) {
+  for (var i = 0; i < numberOfArticles; i++) {
     var linkImage = response.articles[i].urlToImage;
     var linkFullArticle = response.articles[i].url;
     //display news articles with jQuery & Bootstrap
-    var articleInfoCard = $("<div>").addClass("card");
+    var articleInfoCard = $("<div>").addClass("row mb-3");
     var articleText = $("<p>")
       .addClass("card-text")
       .text(response.articles[i].title);
 
-    // var articleTitle = $("<h5>")
-    //   .addClass("card-title")
-    //   .text(response.articles[i].title);
-    var articleTextWrapper = $("<div>").addClass("card-body");
+    var articleTextWrapper = $("<div>").addClass("card-body col-md-6");
     var articleImage = $("<img>")
-      .addClass("card-img-top")
+      .addClass("card-img col-md-6")
       .attr("src", linkImage)
       .attr("alt", "no image");
     var articleFullLink = $("<a>")
@@ -28,7 +25,6 @@ function getNews(response, numberArticles) {
       .attr("target", "_blank")
       .text("To the full article ->");
 
-    // articleTextWrapper.append(articleTitle);
     articleTextWrapper.append(articleText);
     articleTextWrapper.append(articleFullLink);
     articleInfoCard.append(articleImage);
@@ -50,14 +46,21 @@ function displayNewsBySearchWord(userInput) {
     method: "GET"
   }).then(function(response) {
     newsFeed.empty();
-    $("#news-title").text("Latest headlines about '" + userInput + "'");
+    $("#news-title").text("'" + userInput + "'" + " in the news");
     if (response.totalResults == 0) {
-      $("#news-feed").text(
-        userInput +
-          " has been under the radar for a while now... Sorry about that! Try again in a few months!"
+      var noNewsText = $("<p>").addClass("no-news");
+      var noNewsImage = $("<img>")
+        .attr("src", "assets/css/notfound.jpg")
+        .attr("width", "100%");
+      noNewsText.text(
+        "'" +
+          userInput +
+          "' has been under the radar for a while now... Sorry about that! Try again in a few months!"
       );
+      newsFeed.append(noNewsImage);
+      newsFeed.append(noNewsText);
     } else {
-      getNews(response, 4); //the second parameter is how many articles to display in the section, less for mobile version
+      getNews(response, 3);
     }
   });
 }
@@ -67,11 +70,10 @@ $.ajax({
   url: queryURLNews,
   method: "GET"
 }).then(function(response) {
-  console.log(response);
-  getNews(response, 4); //the second parameter is how many articles to display in the section, less for mobile version
+  getNews(response, 3);
 });
 
-// Search Function & displaying relevant news
+//Displaying relevant news on search
 $("#search-btn").on("click", function(event) {
   event.preventDefault();
   var searchTerm = $("#user-search").val();
