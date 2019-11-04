@@ -40,6 +40,15 @@ iframe {
   font-weight: 500;
 }
 
+.card-body {
+  padding-left: 0;
+  font-weight: bold;
+}
+
+a.card-link {
+  color: #fea49f;
+}
+
 #title-row,
 #first-row,
 #second-row {
@@ -59,15 +68,18 @@ iframe {
   height: 650px;
 }
 
-@media screen and (max-width: 576px) {
-  .card {
+@media screen and (max-width: 1200px) {
+  .card-img {
     float: none;
     width: 100%;
   }
+  .card-body {
+    padding-left: 15px;
+  }
 }
 
-@media screen and (min-width: 577px) and (max-width: 1024px) {
-  .card {
-    width: 50%;
+@media screen and (max-width: 565px) {
+  a.card-link {
+    font-size: small;
   }
 }

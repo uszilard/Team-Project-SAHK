@@ -14,9 +14,9 @@ function getNews(response, numberOfArticles) {
       .addClass("card-text")
       .text(response.articles[i].title);
 
-    var articleTextWrapper = $("<div>").addClass("card-body col-md-6");
+    var articleTextWrapper = $("<div>").addClass("card-body col-xl-6");
     var articleImage = $("<img>")
-      .addClass("card-img col-md-6")
+      .addClass("card-img col-xl-6")
       .attr("src", linkImage)
       .attr("alt", "no image");
     var articleFullLink = $("<a>")
