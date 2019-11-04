@@ -17,7 +17,7 @@ function fetchData(queryURL) {
     }
 
     result.forEach(element => {
-      var albumBox = $("<div>").addClass("col-6");
+      var albumBox = $("<div>").addClass("col-xl-6 albumBox");
       var albumTitle = $("<p>");
       var albumImage = $("<img>");
 
