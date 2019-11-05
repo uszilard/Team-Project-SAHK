@@ -43,10 +43,10 @@ var resultsNum = 6;
 
 $(document).ready(function() {
   var queryURL =
-    "https://ws.audioscrobbler.com//2.0/?method=tag.gettopalbums&tag=usa&api_key=" +
+    "https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=usa&api_key=" +
     lastFmKey +
     `&format=json&limit=${resultsNum}`;
-  console.log(queryURL);
+  console.log("queryURL", queryURL);
   fetchData(queryURL);
 });
 
@@ -57,6 +57,8 @@ function searchLastFmByKeyword(searchTerm) {
     "&api_key=" +
     lastFmKey +
     `&format=json&limit=${resultsNum}`;
+  console.log("queryURL", queryURL);
+
   fetchData(queryURL);
   $("#albumsTitle").html(
     "Top Albums for '" +

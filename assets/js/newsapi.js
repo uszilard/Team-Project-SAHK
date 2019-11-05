@@ -29,7 +29,7 @@ function getNews(response, numberOfArticles) {
       .addClass("card-link")
       .attr("href", linkFullArticle)
       .attr("target", "_blank")
-      .text("To the full article on Mtv.com ->");
+      .text("To the full article on Mtv.com  ->");
 
     articleTextWrapper.append(articleText);
     articleTextWrapper.append(articleFullLink);
