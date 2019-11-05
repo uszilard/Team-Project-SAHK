@@ -52,11 +52,11 @@ iframe {
 
 .card-body {
   padding-left: 0;
-  font-weight: bold;
 }
 
 a.card-link {
   color: #fea49f;
+  font-weight: bold;
 }
 
 #title-row,

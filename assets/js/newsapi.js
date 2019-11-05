@@ -5,6 +5,7 @@ var newsFeed = $("#news-feed");
 
 //display the initial content of the news section
 function getNews(response, numberOfArticles) {
+  console.log(response);
   for (var i = 0; i < numberOfArticles; i++) {
     var linkImage = response.articles[i].urlToImage;
     var linkFullArticle = response.articles[i].url;
@@ -12,7 +13,12 @@ function getNews(response, numberOfArticles) {
     var articleInfoCard = $("<div>").addClass("row mb-3");
     var articleText = $("<p>")
       .addClass("card-text")
-      .text(response.articles[i].title);
+      .html(
+        "<b>" +
+          response.articles[i].title +
+          "</b><br>" +
+          response.articles[i].description
+      );
 
     var articleTextWrapper = $("<div>").addClass("card-body col-xl-6");
     var articleImage = $("<img>")
