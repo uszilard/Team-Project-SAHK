@@ -15,9 +15,9 @@ function getNews(response, numberOfArticles) {
       .addClass("card-text")
       .html(
         "<b>" +
-          response.articles[i].title +
-          "</b><br>" +
-          response.articles[i].description
+        response.articles[i].title +
+        "</b><br>" +
+        response.articles[i].description
       );
 
     var articleTextWrapper = $("<div>").addClass("card-body col-xl-6");
@@ -50,14 +50,14 @@ function displayNewsBySearchWord(userInput) {
   $.ajax({
     url: queryURLuserInputNews,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     newsFeed.empty();
     $("#news-title").html(
       "'" +
-        userInput +
-        "'" +
-        " in the news" +
-        "<i class='fas fa-newspaper'></i>"
+      userInput +
+      "'" +
+      " in the news" +
+      "<i class='fas fa-newspaper'></i>"
     );
     if (response.totalResults == 0) {
       var noNewsText = $("<p>").addClass("no-news");
@@ -66,8 +66,8 @@ function displayNewsBySearchWord(userInput) {
         .attr("width", "100%");
       noNewsText.text(
         "'" +
-          userInput +
-          "' has been under the radar for a while now... Sorry about that! Try again in a few months!"
+        userInput +
+        "' has been under the radar for a while now... Sorry about that! Try again in a few months!"
       );
       newsFeed.append(noNewsImage);
       newsFeed.append(noNewsText);
@@ -81,12 +81,12 @@ function displayNewsBySearchWord(userInput) {
 $.ajax({
   url: queryURLNews,
   method: "GET"
-}).then(function(response) {
+}).then(function (response) {
   getNews(response, 3);
 });
 
 //Displaying relevant news on search
-$("#search-btn").on("click", function(event) {
+$("#search-btn").on("click", function (event) {
   event.preventDefault();
   var searchTerm = $("#user-search").val();
   displayNewsBySearchWord(searchTerm);
