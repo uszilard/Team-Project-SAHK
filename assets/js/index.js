@@ -21,10 +21,13 @@ document.addEventListener("keyup", function (event) {
 
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
+
     console.log("i AM RUNNING")
+
     // Cancel the default action, if needed
     // Trigger the button element with a click
-    $("#myInput").click();
-    window.location = window.location + "/mainpage.html"
+
+    $("#myInput").trigger("click");
+
   }
 });
