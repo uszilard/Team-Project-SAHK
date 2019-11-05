@@ -18,13 +18,9 @@ nav {
 h1 {
   font-family: "Sirin Stencil", cursive;
 }
-
-#albumsTitle {
-  text-align: left;
-}
-
-#search-result {
-  padding-left: 0;
+a {
+  color: #fea49f;
+  font-weight: bold;
 }
 
 iframe {
@@ -54,15 +50,17 @@ iframe {
   padding-left: 0;
 }
 
-a.card-link {
-  color: #fea49f;
-  font-weight: bold;
-}
-
-#title-row,
 #first-row,
 #second-row {
   margin: 10px 0;
+}
+
+#albumsTitle {
+  text-align: left;
+}
+
+#search-result {
+  padding-left: 0;
 }
 
 #search-btn {
@@ -83,6 +81,11 @@ a.card-link {
 }
 
 @media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 30px;
+    padding-bottom: 5px;
+  }
+
   .card-img {
     float: none;
     width: 100%;
@@ -98,10 +101,12 @@ a.card-link {
   #albumsTitle {
     text-align: center;
   }
+}
 
-  h1 {
-    font-size: 30px;
-    padding-bottom: 5px;
+@media screen and (max-width: 768px) {
+  #albumsTitle {
+    text-align: left;
+    padding-top: 10px;
   }
 }
 

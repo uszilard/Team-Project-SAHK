@@ -9,7 +9,6 @@ function fetchData(queryURL) {
   }).then(function(response) {
     $("#lastFm").empty();
     var result;
-    console.log(response);
     if (response.albums) {
       result = response.albums.album;
     } else {
@@ -17,12 +16,16 @@ function fetchData(queryURL) {
     }
 
     result.forEach(element => {
-      var albumBox = $("<div>").addClass("col-xl-6 albumBox");
-      var albumTitle = $("<p>");
+      var albumBox = $("<div>").addClass("col albumBox");
+      var albumTitle = $("<a>")
+        .addClass("card-link")
+        .attr("href", element.url)
+        .attr("target", "_blank")
+        .attr("title", "To the artist's page on Last.fm");
       var albumImage = $("<img>");
 
       if (element.artist.name) {
-        albumTitle.text(element.artist.name + " - " + element.name);
+        albumTitle.html("<br>" + element.artist.name + " - " + element.name);
       } else {
         albumTitle.text(element.name);
       }
@@ -33,7 +36,6 @@ function fetchData(queryURL) {
       albumBox.append(albumTitle);
       lastFm.append(albumBox);
     });
-    console.log("lastFmResponse", response);
   });
 }
 
