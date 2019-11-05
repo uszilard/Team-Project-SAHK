@@ -7,6 +7,6 @@ $("#search-btn").on("click", function (event) {
   searchYouTubeByKeyword(userSearchInput);
   searchLastFmByKeyword(userSearchInput);
   displayNewsBySearchWord(userSearchInput);
-  //getImagesData(userSearchInput);
+  getImagesData(userSearchInput);
 });
 //
