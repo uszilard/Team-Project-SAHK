@@ -6,7 +6,7 @@ function fetchData(queryURL) {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     $("#lastFm").empty();
     var result;
     if (response.albums) {
@@ -41,7 +41,7 @@ function fetchData(queryURL) {
 
 var resultsNum = 6;
 
-$(document).ready(function() {
+$(document).ready(function () {
   var queryURL =
     "https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=usa&api_key=" +
     lastFmKey +
@@ -62,8 +62,8 @@ function searchLastFmByKeyword(searchTerm) {
   fetchData(queryURL);
   $("#albumsTitle").html(
     "Top Albums for '" +
-      searchTerm +
-      "'" +
-      "<i class='fas fa-record-vinyl'></i>"
+    searchTerm +
+    "'" +
+    "<i class='fas fa-record-vinyl'></i>"
   );
 }
