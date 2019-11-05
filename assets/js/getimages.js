@@ -11,7 +11,6 @@ $(document).ready(function() {
       request.setRequestHeader("Authorization", apiKey);
     }
   }).then(function(response) {
-    console.log("i am responding to you", response);
     var imageurl = response.photos[0].src.large;
     $("#first-slide").attr("src", imageurl);
   });
