@@ -19,6 +19,14 @@ h1 {
   font-family: "Sirin Stencil", cursive;
 }
 
+#albumsTitle {
+  text-align: left;
+}
+
+#search-result {
+  padding-left: 0;
+}
+
 iframe {
   border: none;
 }
@@ -78,8 +86,13 @@ a.card-link {
   }
 }
 
-@media screen and (max-width: 776px) {
-}
+/* @media screen and (max-width: 767px) {
+  .youtubeBox {
+    flex: 100%;
+    max-width: 100%;
+  }
+} */
+
 @media screen and (max-width: 565px) {
   a.card-link {
     font-size: small;
