@@ -12,6 +12,36 @@ $(document).ready(function () {
         }
     }).then(function (response) {
         var imageurl = response.photos[0].src.large;
+        var imageurl2 = response.photos[1].src.large;
+        var imageurl3 = response.photos[2].src.large;
+
+
         $("#first-slide").attr("src", imageurl);
+        $("#second-slide").attr("src", imageurl2);
+        $("#third-slide").attr("src", imageurl3);
     });
 });
+
+
+
+
+function getImagesData(searchTerm) {
+    var queryURLSearch =
+        "https://api.pexels.com/v1/search?query=" + searchTerm + "+query&per_page=3&page=" + randomNumber;
+    $.ajax({
+        type: "GET",
+        url: queryURLSearch,
+        beforeSend: function (request) {
+            request.setRequestHeader("Authorization", apiKey);
+        }
+    }).then(function (response) {
+        var imageurl = response.photos[0].src.large;
+        var imageurl2 = response.photos[1].src.large;
+        var imageurl3 = response.photos[2].src.large;
+
+
+        $("#first-slide").attr("src", imageurl);
+        $("#second-slide").attr("src", imageurl2);
+        $("#third-slide").attr("src", imageurl3);
+    });
+}

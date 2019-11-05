@@ -22,6 +22,7 @@ $(document).ready(function () {
 
 // Call the YouTube API
 var youTube = $("#youtube");
+
 function searchYouTubeByKeyword(searchTerm) {
     $.ajax({
         type: "GET",
