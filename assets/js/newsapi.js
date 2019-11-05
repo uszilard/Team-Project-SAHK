@@ -84,10 +84,3 @@ $.ajax({
 }).then(function (response) {
   getNews(response, 3);
 });
-
-//Displaying relevant news on search
-$("#search-btn").on("click", function (event) {
-  event.preventDefault();
-  var searchTerm = $("#user-search").val();
-  displayNewsBySearchWord(searchTerm);
-});
