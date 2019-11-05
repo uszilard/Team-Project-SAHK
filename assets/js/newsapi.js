@@ -46,7 +46,13 @@ function displayNewsBySearchWord(userInput) {
     method: "GET"
   }).then(function(response) {
     newsFeed.empty();
-    $("#news-title").text("'" + userInput + "'" + " in the news");
+    $("#news-title").html(
+      "'" +
+        userInput +
+        "'" +
+        " in the news" +
+        "<i class='fas fa-newspaper'></i>"
+    );
     if (response.totalResults == 0) {
       var noNewsText = $("<p>").addClass("no-news");
       var noNewsImage = $("<img>")

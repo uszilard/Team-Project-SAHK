@@ -61,7 +61,9 @@ function embedVideoOnLoad(data) {
 function embedVideoOnSearch(data) {
   console.log(data);
   youTube.empty();
-  $("#search-result").html("<h1>" + "Search Result" + "</h1>");
+  $("#search-result").html(
+    "<h1>" + "Search Results " + "<i class='fas fa-film'></i></h1>"
+  );
   data.items.forEach(item => {
     var addVideo = $("<iframe>")
       .addClass("col-xl-6")

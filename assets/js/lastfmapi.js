@@ -41,7 +41,7 @@ var resultsNum = 6;
 
 $(document).ready(function() {
   var queryURL =
-    "http://ws.audioscrobbler.com//2.0/?method=tag.gettopalbums&tag=usa&api_key=" +
+    "https://ws.audioscrobbler.com//2.0/?method=tag.gettopalbums&tag=usa&api_key=" +
     lastFmKey +
     `&format=json&limit=${resultsNum}`;
   console.log(queryURL);
@@ -50,11 +50,16 @@ $(document).ready(function() {
 
 function searchLastFmByKeyword(searchTerm) {
   var queryURL =
-    "http://ws.audioscrobbler.com/2.0/?method=album.search&album=" +
+    "https://ws.audioscrobbler.com/2.0/?method=album.search&album=" +
     searchTerm +
     "&api_key=" +
     lastFmKey +
     `&format=json&limit=${resultsNum}`;
   fetchData(queryURL);
-  $("#albumsTitle").text("Top Albums for '" + searchTerm + "'");
+  $("#albumsTitle").html(
+    "Top Albums for '" +
+      searchTerm +
+      "'" +
+      "<i class='fas fa-record-vinyl'></i>"
+  );
 }
