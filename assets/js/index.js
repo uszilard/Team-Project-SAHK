@@ -11,20 +11,16 @@ $("#search-btn").on("click", function (event) {
 });
 //
 
-// Get the input field
-
 // Execute a function when the user releases a key on the keyboard
 document.addEventListener("keyup", function (event) {
-  event.preventDefault();
-
-  console.log(event)
+  // Cancel the default action, if needed
+  event.preventDefault()
 
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
 
-    console.log("i AM RUNNING")
+    console.log("I am working , stop pushing me")
 
-    // Cancel the default action, if needed
     // Trigger the button element with a click
 
     $("#myInput").trigger("click");
