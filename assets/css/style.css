@@ -29,6 +29,7 @@ h1 {
 
 iframe {
   border: none;
+  padding-bottom: 5px;
 }
 
 .form-inline {
@@ -41,6 +42,7 @@ iframe {
   padding: 0;
   text-align: center;
   font-weight: 500;
+  width: 100%;
 }
 
 .no-news {
@@ -50,11 +52,11 @@ iframe {
 
 .card-body {
   padding-left: 0;
-  font-weight: bold;
 }
 
 a.card-link {
   color: #fea49f;
+  font-weight: bold;
 }
 
 #title-row,
@@ -76,6 +78,10 @@ a.card-link {
   height: 650px;
 }
 
+#news-feed-box {
+  padding-left: 10px;
+}
+
 @media screen and (max-width: 1200px) {
   .card-img {
     float: none;
@@ -84,14 +90,20 @@ a.card-link {
   .card-body {
     padding-left: 15px;
   }
-}
 
-/* @media screen and (max-width: 767px) {
-  .youtubeBox {
-    flex: 100%;
-    max-width: 100%;
+  .lastFmBox {
+    margin: auto;
   }
-} */
+
+  #albumsTitle {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 30px;
+    padding-bottom: 5px;
+  }
+}
 
 @media screen and (max-width: 565px) {
   a.card-link {
