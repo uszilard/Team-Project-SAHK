@@ -1,79 +1,61 @@
-//
-var youTubeSelect = $("#youTubeBtnFucntion");
-var youtTubeKey = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U";
-//
+const API_KEY = "AIzaSyB08uG89n8Ul5LA3j0fu1ubMFmh4SrV44U";
+const YOUTUBE_TRENDING_ENDPOINT = 'https://www.googleapis.com/youtube/v3/videos';
+const YOUTUBE_SEARCH_ENDPOINT = 'https://www.googleapis.com/youtube/v3/search';
 
-//on ppage load gives back the most popular videos
-$(document).ready(function () {
-    $.ajax({
-        type: "GET",
-        url: "https://www.googleapis.com/youtube/v3/videos",
-        data: {
-            key: youtTubeKey,
-            part: "snippet",
-            chart: "mostPopular",
-            videoCategoryId: "0",
-            maxResults: 8
-        },
-        success: embedVideoOnLoad
+function fetchYoutube(url, data = {}) {
+    Object.assign(data, {
+        key: API_KEY,
+        part: "snippet",
+        maxResults: 8
     });
-});
-//
+    return $.ajax({
+        type: "GET",
+        url,
+        data,
+    }).then(res => renderVideos(res));
+}
 
-// Call the YouTube API
-var youTube = $("#youtube");
+function loadInitialVideos() {
+    return fetchYoutube(YOUTUBE_TRENDING_ENDPOINT, {
+        chart: "mostPopular",
+        videoCategoryId: "0",
+    });
+}
 
 function searchYouTubeByKeyword(searchTerm) {
-    $.ajax({
-        type: "GET",
-        url: "https://www.googleapis.com/youtube/v3/search",
-        data: {
-            key: youtTubeKey,
-            q: searchTerm,
-            part: "snippet",
-            maxResults: 8,
-            type: "video",
-            videoEmbeddable: true
-        },
-        success: embedVideoOnSearch,
-        error: function (response) {
-            alert(response + "Check internet connection");
-            console.log("Request Failed");
-        }
+    return fetchYoutube(YOUTUBE_SEARCH_ENDPOINT, {
+        q: searchTerm,
+        type: "video",
+        videoEmbeddable: true
+    })
+    .then(res => {
+        $("#search-result").html(
+            "<h1>" + "Search Results " + "<i class='fas fa-film'></i></h1>"
+        );
+    })
+    .catch(err => {
+        console.logo('Check internet connection:');
+        console.error(err);
     });
 }
 //
 
-// Display video on load
-function embedVideoOnLoad(data) {
+function renderVideos(data) {
     console.log(data);
-    data.items.forEach(item => {
-        var addVideo = $("<iframe>")
-            .addClass("col-xl-6")
-            .attr({ allowfullscreen: "allowfullscreen", frameborder: "0" });
-        addVideo.addClass("video-stream");
-        addVideo.attr("src", "https://www.youtube.com/embed/" + item.id);
-        youTube.append(addVideo);
-    });
-}
-//
-
-// Display video on search
-function embedVideoOnSearch(data) {
-    console.log(data);
+    const youTube = $("#youtube");
     youTube.empty();
-    $("#search-result").html(
-        "<h1>" + "Search Results " + "<i class='fas fa-film'></i></h1>"
-    );
-    data.items.forEach(item => {
+    data.items.forEach(video => {
+        var videoId;
+        if (video.kind === "youtube#searchResult") {
+            videoId = video.id.videoId;
+        } else {
+            videoId = video.id;
+        }
         var addVideo = $("<iframe>")
             .addClass("col-xl-6")
             .attr({ allowfullscreen: "allowfullscreen", frameborder: "0" });
         addVideo.addClass("video-stream");
-        addVideo.attr("src", "https://www.youtube.com/embed/" + item.id.videoId);
+        addVideo.attr("src", "https://www.youtube.com/embed/" + videoId);
         youTube.append(addVideo);
     });
 }
-//
-
-//Szilard is working on this last updated 03.11.2019
